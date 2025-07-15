@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Toolabs - Apps Center</title>
+
+		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="dist/styles.css" />
+	</head>
+
+	<body class="p-4 sm:p-6 md:p-8">
+		<div class="background-container">
+			<div id="blob1" class="blob blob-1"></div>
+			<div id="blob2" class="blob blob-2"></div>
+			<div id="blob3" class="blob blob-3"></div>
+		</div>
+
+		<main class="container mx-auto relative z-10">
+			<header class="fixed top-5 z-50 flex items-end justify-center w-full">
+				<div class="dynamic-island glass-card rounded-full flex items-center justify-center overflow-hidden">
+					<div class="logo-container absolute">
+						<img src="https://cdn.toolabs.live/img/extension/logo.png" alt="Toolabs Logo" class="w-24 logo-img" />
+					</div>
+					<div class="theme-switcher flex items-center justify-center">
+						<button id="light-theme-btn" class="px-3 py-1 text-sm font-semibold rounded-full transition-colors">Light</button>
+						<button id="dark-theme-btn" class="px-3 py-1 text-sm font-semibold rounded-full transition-colors">Dark</button>
+					</div>
+				</div>
+			</header>
+
+			<div id="login-prompt" class="hidden flex flex-col items-center justify-center p-6 text-white text-center">
+				<img src="https://cdn.toolabs.live/img/extension/logo.png" alt="Toolabs Logo" class="w-32 mb-4" />
+				<h2 class="text-xl font-bold mb-2">Please Login</h2>
+				<p class="py-4">You need to login to your Toolabs account to continue.</p>
+				<button id="refresh-login-button" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-opacity-90">Go to Login</button>
+			</div>
+
+			<div id="main-content" class="text-center pt-28 pb-10">
+				<h1 class="text-4xl md:text-5xl font-extrabold" style="color: var(--text-primary)">Pusat Aplikasi Anda</h1>
+				<p style="color: var(--text-secondary)" class="mt-3 max-w-xl mx-auto">
+					Akses semua tools favorit Anda dari satu tempat dengan antarmuka yang modern dan interaktif.
+				</p>
+			</div>
+
+			<div class="mb-12 max-w-md mx-auto">
+				<div class="relative">
+					<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+						<svg class="h-5 w-5" style="color: var(--text-secondary)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+							<path
+								fill-rule="evenodd"
+								d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</div>
+					<input
+						id="search-input"
+						type="text"
+						placeholder="Cari aplikasi..."
+						class="w-full pl-11 pr-4 py-3 rounded-full glass-card focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--bg-color)] focus:ring-[var(--highlight-color)] transition-all"
+					/>
+				</div>
+			</div>
+
+			<div id="category-wrapper">
+				<div id="categories-container" class="flex overflow-x-auto space-x-3 py-4 mb-6 no-scrollbar"></div>
+			</div>
+
+			<div id="tools-grid" class="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-3"></div>
+			<br /><br />
+
+			<div
+				id="server-modal"
+				class="hidden fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 transition-opacity duration-300"
+			>
+				<div class="modal-content glass-card p-6 rounded-2xl w-full max-w-sm relative transform scale-95 transition-transform duration-300">
+					<button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">&times;</button>
+					<h3 id="modal-tool-name" class="text-2xl font-bold mb-1 text-center" style="color: var(--text-primary)">Nama Tool</h3>
+					<p class="text-center text-sm mb-5" style="color: var(--text-secondary)">Pilih server yang tersedia</p>
+					<div id="server-list" class="space-y-2 max-h-60 overflow-y-auto"></div>
+				</div>
+			</div>
+
+			<div id="custom-context-menu" class="hidden absolute z-50">
+				<ul class="glass-card rounded-lg py-1 shadow-xl"></ul>
+			</div>
+
+			<div
+				id="toast-notification"
+				class="fixed bottom-5 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-white text-sm shadow-lg transition-all duration-300 opacity-0 pointer-events-none"
+				style="background-color: var(--highlight-color); z-index: 100"
+			>
+				Pesan notifikasi
+			</div>
+
+			<div id="onboarding-tooltip" class="hidden absolute z-50 glass-card p-3 rounded-lg shadow-xl max-w-xs">
+				<p class="text-sm mb-2"><b>Tips:</b> Klik kanan atau tahan kartu ini untuk menyematkan tool favoritmu!</p>
+				<button id="tooltip-close-btn" class="text-xs font-bold py-1 px-2 rounded" style="background-color: var(--highlight-color)">Mengerti</button>
+			</div>
+		</main>
+
+		<script src="popup.js"></script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+{
+	"manifest_version": 3,
+	"name": "Toolabs v3",
+	"version": "3.0",
+	"description": "UnOfficial extension by toolabs.live",
+	"action": {
+		"default_popup": "popup.html",
+		"default_icon": {
+			"16": "icon/Toolabs-main-icon-16.png",
+			"48": "icon/Toolabs-main-icon-48.png",
+			"128": "icon/Toolabs-main-icon-128.png"
+		}
+	},
+	"icons": {
+		"16": "icon/Toolabs-main-icon-16.png",
+		"48": "icon/Toolabs-main-icon-48.png",
+		"128": "icon/Toolabs-main-icon-128.png"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://www.toolabs.live/*"],
+			"js": ["content-script.js"],
+			"run_at": "document_idle"
+		}
+	],
+	"permissions": ["storage", "tabs", "activeTab", "scripting", "cookies"],
+	"host_permissions": ["https://www.toolabs.live/*", "https://*/*"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_security_policy": {
+		"extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' https://unpkg.com https://fonts.googleapis.com; img-src 'self' https://upload.wikimedia.org https://plus.unsplash.com https://cdn.toolabs.live/;"
+	},
+	"homepage_url": "https://www.toolabs.live"
+}
